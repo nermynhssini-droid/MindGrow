@@ -1,12 +1,8 @@
-/* =========================
-   UTIL HELPERS
-========================= */
+
 
 const $ = (id) => document.getElementById(id);
 
-/* =========================
-   LOAD ORGANIZATIONS
-========================= */
+
 
 async function loadOrganizations() {
 
@@ -41,9 +37,7 @@ async function loadOrganizations() {
     }
 }
 
-/* =========================
-   SHOW CERTIFICATIONS
-========================= */
+
 
 async function showCert(orgId, orgName) {
 
@@ -95,9 +89,7 @@ async function showCert(orgId, orgName) {
     }
 }
 
-/* =========================
-   SHOW COURSES
-========================= */
+
 
 async function showCourse(certName) {
 
@@ -150,9 +142,7 @@ async function showCourse(certName) {
     }
 }
 
-/* =========================
-   BACK NAVIGATION
-========================= */
+
 
 function backToOrg() {
     const certPage = $("certPage");
@@ -170,9 +160,7 @@ function backToCert() {
     if (certPage) certPage.classList.remove("hidden");
 }
 
-/* =========================
-   INIT APP
-========================= */
+
 
 document.addEventListener("DOMContentLoaded", () => {
     loadOrganizations();
@@ -207,3 +195,6 @@ function enableDelete() {
     document.getElementById("nameField").required = false;
     document.getElementById("orgField").required = false;
 }
+
+
+;

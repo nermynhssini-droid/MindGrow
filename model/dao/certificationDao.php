@@ -8,7 +8,6 @@ class CertificationDAO {
         $this->conn = $db;
     }
 
-    /* ================= ADD ================= */
     public function add($name, $org_id) {
 
         $stmt = $this->conn->prepare("
@@ -19,7 +18,6 @@ class CertificationDAO {
         return $stmt->execute([$name, $org_id]);
     }
 
-    /* ================= UPDATE ================= */
     public function update($id, $name, $org_id) {
 
         $stmt = $this->conn->prepare("
@@ -31,7 +29,6 @@ class CertificationDAO {
         return $stmt->execute([$name, $org_id, $id]);
     }
 
-    /* ================= DELETE ================= */
     public function delete($id) {
 
         $stmt = $this->conn->prepare("
@@ -41,7 +38,6 @@ class CertificationDAO {
         return $stmt->execute([$id]);
     }
 
-    /* ================= GET ALL (utile API JS) ================= */
     public function getAll() {
 
         $stmt = $this->conn->query("

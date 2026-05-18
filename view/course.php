@@ -9,9 +9,7 @@ if (!$id) {
     die("ID cours manquant");
 }
 
-/* =========================
-   GET COURSE DATA
-========================= */
+
 $stmt = $conn->prepare("
     SELECT c.*, cert.name AS cert_name
     FROM courses c

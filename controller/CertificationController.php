@@ -8,7 +8,6 @@ $conn = db();
 
 $dao = new CertificationDAO($conn);
 
-/* ================= ADD ================= */
 if (isset($_POST['add'])) {
 
     if (!empty($_POST['name']) && !empty($_POST['org_id'])) {
@@ -23,7 +22,6 @@ if (isset($_POST['add'])) {
     exit;
 }
 
-/* ================= UPDATE ================= */
 if (isset($_POST['update'])) {
 
     if (!empty($_POST['id']) && !empty($_POST['name']) && !empty($_POST['org_id'])) {
@@ -39,7 +37,6 @@ if (isset($_POST['update'])) {
     exit;
 }
 
-/* ================= DELETE ================= */
 if (isset($_POST['delete'])) {
 
     if (!empty($_POST['id'])) {

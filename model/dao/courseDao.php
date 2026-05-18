@@ -8,7 +8,6 @@ class CourseDAO {
         $this->conn = $db;
     }
 
-    /* ================= GET ALL ================= */
     public function getAll() {
         $sql = "SELECT c.*, cert.name AS cert_name 
                 FROM courses c
@@ -17,7 +16,6 @@ class CourseDAO {
         return $this->conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /* ================= ADD ================= */
     public function add($title, $content, $cert_id, $file_path) {
 
         $stmt = $this->conn->prepare("
@@ -28,13 +26,11 @@ class CourseDAO {
         $stmt->execute([$title, $content, $cert_id, $file_path]);
     }
 
-    /* ================= DELETE ================= */
     public function delete($id) {
         $stmt = $this->conn->prepare("DELETE FROM courses WHERE id=?");
         $stmt->execute([$id]);
     }
 
-    /* ================= UPDATE ================= */
     public function update($id, $title, $content, $cert_id, $file_path = null) {
 
         if ($file_path) {

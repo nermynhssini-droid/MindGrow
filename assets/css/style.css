@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 80px;
-    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    background: linear-gradient(135deg, #242986, #8f94fb);
     color: white;
     min-height: 100vh;
 }
@@ -914,7 +914,7 @@ body.dark select:focus {
     white-space: nowrap;
 }
 
-/* 🔥 IMPORTANT : corrige les inputs globaux si ils cassent layout */
+
 .form-container input[type="checkbox"] {
     width: auto;
     margin: 0;

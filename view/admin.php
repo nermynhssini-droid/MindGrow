@@ -10,37 +10,33 @@ require_once "../controller/AdminController.php";
 <div class="admin-body">
 <div class="admin-layout">
 
-    <!-- SIDEBAR -->
     <div class="sidebar">
         <h2>MindGrow</h2>
-        <a href="#users">👤 Users</a>
+        <a href="#users">👤 utilisateurs</a>
         <a href="#organizations">🏢 Organizations</a>
         <a href="#certifications">🎓 Certifications</a>
-        <a href="#courses">📚 Courses</a>
+        <a href="#courses">📚 Cours</a>
         <a href="#admin-logs">📜 Admin Logs</a>
         
 
-        <a href="../view/home.php">⬅ Home</a>
+        <a href="../view/home.php">⬅ Accueil</a>
         <a href="../public/logout.php" class="logout">
-            Logout
+            déconnexion
         </a>
     </div>
 
-    <!-- CONTENT -->
     <div class="admin-content">
 
-        <!-- TOPBAR -->
         <div class="topbar">
-            <h3>Dashboard Admin</h3>
+            <h3> Tableau de bord administrateur</h3>
             <div>👋 <?= $_SESSION['user'] ?></div>
    
         </div>
 
-        <!-- STATS -->
         <div class="stats">
 
             <div class="stat-card">
-                <h4>Users</h4>
+                <h4>utilisateurs</h4>
                 <p><?= $usersCount ?></p>
             </div>
 
@@ -50,7 +46,7 @@ require_once "../controller/AdminController.php";
             </div>
 
             <div class="stat-card">
-                <h4>Courses</h4>
+                <h4>Cours</h4>
                 <p><?= $coursesCount ?></p>
             </div>
 
@@ -61,9 +57,8 @@ require_once "../controller/AdminController.php";
 
         </div>
 
-        <!-- USERS -->
         <section id="users" class="section">
-            <h2>👤 Users</h2>
+            <h2>👤 utilisateurs</h2>
 
             <div class="card-box">
 
@@ -78,7 +73,7 @@ require_once "../controller/AdminController.php";
                             <a href="../controller/UserController.php?delete=<?= $u['id'] ?>"
            onclick="return confirm('Supprimer cet utilisateur ?')"
            style="color:red;">
-           ❌ Delete
+           ❌ supprimer
         </a>
                 </p>
 
@@ -86,12 +81,10 @@ require_once "../controller/AdminController.php";
 
             </div>
         </section>
-        <!-- ORGANIZATIONS -->
         <section id="organizations" class="section">
 
             <h2>🏢 Organizations</h2>
 
-            <!-- ADD ORGANIZATION -->
             <form method="POST"
       action="../controller/OrganizationController.php"
       enctype="multipart/form-data">
@@ -107,9 +100,9 @@ require_once "../controller/AdminController.php";
     <?php if ($editOrg): ?>
         <input type="hidden" name="id" value="<?= $editOrg['id'] ?>">
 
-        <button name="update">💾 Update Organization</button>
+        <button name="update">💾 mise à jour Organization</button>
     <?php else: ?>
-        <button name="add">➕ Add Organization</button>
+        <button name="add">➕ ajouter Organization</button>
     <?php endif; ?>
 
 </form>
@@ -138,12 +131,12 @@ require_once "../controller/AdminController.php";
                     </ul>
 
 <a href="../controller/OrganizationController.php?edit=<?= $o['id'] ?>">
-    ✏️ Edit
+    ✏️ modifier
 </a><br>
 
 <a href="../controller/OrganizationController.php?delete=<?= $o['id'] ?>"
    onclick="return confirm('Delete ?')">
-    ❌ Delete
+    ❌ supprimer
 </a>
 
                 </div>
@@ -153,7 +146,6 @@ require_once "../controller/AdminController.php";
             </div>
 
         </section>
-         <!-- ADD CERTIFICATION -->
 <section class="section" id="certifications">
 
     <h2>🎓 Certifications</h2>
@@ -164,7 +156,6 @@ require_once "../controller/AdminController.php";
 
     <form method="POST" action="../controller/CertificationController.php">
 
-        <!-- 🔥 SELECT (ONLY FOR EDIT/DELETE) -->
         <select name="id" id="certSelect">
 
             <option value="">Select certification (for edit/delete)</option>
@@ -177,7 +168,6 @@ require_once "../controller/AdminController.php";
 
         </select><br><br>
 
-        <!-- ADD / EDIT FIELDS -->
         <input type="text"
                name="name"
                id="nameField"
@@ -195,18 +185,16 @@ require_once "../controller/AdminController.php";
 
         </select><br><br>
 
-        <!-- BUTTONS -->
-        <button type="submit" name="add" onclick="enableAdd()">➕ Add</button>
-        <button type="submit" name="update" onclick="enableEdit()">✏️ Edit</button>
-        <button type="submit" name="delete" onclick="enableDelete()">🗑 Delete</button>
+        <button type="submit" name="add" onclick="enableAdd()">➕ ajouter</button>
+        <button type="submit" name="update" onclick="enableEdit()">✏️ modifier</button>
+        <button type="submit" name="delete" onclick="enableDelete()">🗑 supprimer</button>
 
     </form>
 
 </section>
 
-        <!-- COURSES -->
         <section id="courses" class="section">
-            <h2>📚 Courses</h2>
+            <h2>📚 Cours</h2>
 
             <div class="card-box">
 
@@ -243,16 +231,15 @@ require_once "../controller/AdminController.php";
 
                     <?php if ($editCourse): ?>
                         <input type="hidden" name="id" value="<?= $editCourse['id'] ?>">
-                        <button name="update">💾 Update</button>
+                        <button name="update">💾 mise à jour</button>
                     <?php else: ?>
-                        <button name="add">➕ Add Course</button>
+                        <button name="add">➕ ajouter Cours</button>
                     <?php endif; ?>
 
                 </form>
 
                 <hr>
 
-                <!-- ACCORDION -->
                 <?php
                 $allCerts = $conn->query("SELECT * FROM certifications")->fetchAll();
                 ?>
@@ -286,17 +273,17 @@ require_once "../controller/AdminController.php";
 
                                         <?php if (!empty($c['file_path'])): ?>
                                             <a href="/mindgrow/<?= $c['file_path'] ?>" target="_blank">
-                                                📂 Open
+                                                📂 ouvrir
                                             </a>
                                         <?php endif; ?>
 
                                         <a href="../controller/CourseController.php?edit=<?= $c['id'] ?>">
-    ✏️ Edit
+    ✏️ modifier
 </a>
 
 <a href="../controller/CourseController.php?delete=<?= $c['id'] ?>"
    onclick="return confirm('Supprimer ce cours ?')">
-    🗑 Delete Course
+    🗑 supprimer Cours
 </a>
 
                                     </div>
@@ -327,7 +314,7 @@ $log = $conn->query("
 ")->fetch(PDO::FETCH_ASSOC);
 ?>
 
-<h2 id="admin-logs">📜 Admin Logs</h2>
+<h2 id="admin-logs">📜 Journaux d’administration </h2>
 
 <div class="admin-logs">
 

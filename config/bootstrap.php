@@ -36,9 +36,7 @@ if (!isset($_SESSION['user_id']) && !empty($_COOKIE['remember_token'])) {
     }
 }
 
-/* =========================
-   HELPERS (OPTIONNEL)
-========================= */
+
 
 // fonction utile pour vérifier login facilement
 function isLoggedIn() {
@@ -52,9 +50,7 @@ function requireAuth() {
         exit;
     }
 }
-/* =========================
-   COOKIE VISITES (FIX LOGIN ISSUE)
-========================= */
+
 date_default_timezone_set("Africa/Tunis");
 
 if (isset($_POST['reset_visits'])) {
@@ -66,7 +62,7 @@ if (isset($_POST['reset_visits'])) {
     exit;
 }
 
-/* 🔥 IMPORTANT : éviter double increment */
+
 if (!isset($_COOKIE['visited_home'])) {
 
     $nbVisites = isset($_COOKIE['nb_visites'])

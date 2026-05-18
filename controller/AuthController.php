@@ -8,7 +8,6 @@ $conn = db();
 
 $dao = new UserDAO(db());
 
-/* ================= REGISTER ================= */
 
 if(isset($_POST['register'])) {
 
@@ -24,7 +23,6 @@ if(isset($_POST['register'])) {
     }
 }
 
-/* ================= LOGIN ================= */
 if(isset($_POST['login'])) {
 
     $email = $_POST['email'];
@@ -35,13 +33,11 @@ if(isset($_POST['login'])) {
     if($user && password_verify($password, $user['password'])) {
         
 
-        /* ================= SESSION ================= */
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user'] = $user['name'];
         $_SESSION['role'] = $user['role'];
         
 
-        /* ================= REMEMBER ME ================= */
         if(!empty($_POST['remember'])) {
 
             $token = bin2hex(random_bytes(32));
@@ -62,7 +58,6 @@ if(isset($_POST['login'])) {
             setcookie("remember_token", "", time() - 3600, "/");
         }
 
-        /* ================= REDIRECT ================= */
         if($user['role'] === 'admin') {
             header("Location: ../public/index.php?page=admin");
         } else {
@@ -76,7 +71,7 @@ if(isset($_POST['login'])) {
     }
 }
 
-/* ================= LOGOUT ================= */
+
 if(isset($_GET['logout'])) {
 
     if(isset($_SESSION['user_id'])) {

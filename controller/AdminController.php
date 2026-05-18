@@ -12,7 +12,7 @@ $coursesCount = $conn->query("SELECT COUNT(*) FROM courses")->fetchColumn();
 $certsCount = $conn->query("SELECT COUNT(*) FROM certifications")->fetchColumn();
 $orgsCount = $conn->query("SELECT COUNT(*) FROM organizations")->fetchColumn();
 
-/* ================= DATA ================= */
+
 $users = $conn->query("SELECT * FROM users")->fetchAll();
 
 $courses = $conn->query("
@@ -23,7 +23,7 @@ $courses = $conn->query("
 
 $orgs = $conn->query("SELECT * FROM organizations")->fetchAll(); 
 
-/* EDIT COURSE */
+
 $editCourse = null;
 
 if (isset($_SESSION['edit_course_id'])) {
@@ -35,7 +35,7 @@ if (isset($_SESSION['edit_course_id'])) {
 
     unset($_SESSION['edit_course_id']);
 }
-/* EDIT CERTIFICATION */
+
 $editCert = null;
 
 if (isset($_SESSION['edit_cert_id'])) {

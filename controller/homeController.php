@@ -5,9 +5,7 @@ require_once "../config/Database.php";
 require_once "../model/DAO/OrganizationDAO.php";
 
 
-/* =========================
-   AUTO LOGIN VIA COOKIE
-========================= */
+
 if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_token'])) {
 
     $token = $_COOKIE['remember_token'];
@@ -29,9 +27,7 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_token'])) {
     }
 }
 
-/* =========================
-   THEME SWITCH
-========================= */
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['theme'])) {
 
     $newTheme = $_POST['theme'];
@@ -57,9 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['theme'])) {
     exit();
 }
 
-/* =========================
-   CURRENT THEME
-========================= */
+
 $theme = $_COOKIE['theme'] ?? 'light';
 
 $db = new Database();
@@ -74,14 +68,14 @@ class HomeController {
 exit;
         }
 
-        /* DATABASE */
+       
         $db = new Database();
         $conn = $db->getConnection();
 
         $dao = new OrganizationDAO($conn);
         $orgs = $dao->getAll();
 
-        /* COOKIE VISITES */
+        
         
 
         if (isset($_POST['reset_visits'])) {

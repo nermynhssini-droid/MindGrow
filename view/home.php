@@ -25,7 +25,6 @@ require_once "../config/bootstrap.php";
 
 <body class="dashboard <?= $theme ?>">
 
-<!-- NAVBAR -->
 <div class="navbar">
 
     <h2>MindGrow</h2>
@@ -56,7 +55,7 @@ require_once "../config/bootstrap.php";
 </form>
 
         <a href="../public/logout.php" class="logout">
-            Logout
+            déconnexion
         </a>
 
     </div>
@@ -103,7 +102,6 @@ require_once "../config/bootstrap.php";
 
 
 
-<!-- ================= LEVEL 1 ================= -->
 <div id="orgPage">
 
     <div class="welcome">
@@ -115,7 +113,6 @@ require_once "../config/bootstrap.php";
 
 </div>
 
-<!-- ================= LEVEL 2 ================= -->
 <div id="certPage" class="hidden">
 
     <div class="navbar">
@@ -134,7 +131,6 @@ require_once "../config/bootstrap.php";
 
 </div>
 
-<!-- ================= LEVEL 3 ================= -->
 <div id="coursePage" class="hidden">
 
     <div class="navbar">

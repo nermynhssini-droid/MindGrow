@@ -16,7 +16,6 @@ if (isset($_GET['delete'])) {
 
     $id = (int) $_GET['delete'];
 
-    /* ================= GET USER (IMPORTANT) ================= */
    $stmt = $conn->prepare("SELECT id, name, role FROM users WHERE id = ?");
 $stmt->execute([$id]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -25,7 +24,6 @@ if (!$user) {
     die("User introuvable");
 }
 
-/* 🚨 BLOQUER SUPPRESSION ADMIN */
 if ($user['role'] === 'admin') {
     echo "<script>
 alert('❌ Impossible de supprimer un admin');
@@ -34,11 +32,9 @@ window.location.href = '../public/index.php?page=admin';
 exit;
 }
 
-    /* ================= DELETE USER ================= */
     $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
     $stmt->execute([$id]);
 
-    /* ================= ADMIN LOGS ================= */
 
     $stmt = $conn->prepare("
         SELECT id, details
